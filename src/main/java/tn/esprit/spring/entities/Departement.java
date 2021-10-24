@@ -2,7 +2,6 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,25 +22,25 @@ public class Departement implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
-	//@JsonManagedReference 
+
+	//@JsonManagedReference
 	@JsonIgnore
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Employe> employes;
-	 
+
 	@ManyToOne
 	private Entreprise entreprise;
 
 	public Departement() {
 		super();
 	}
-	
+
 	public Departement(String name) {
 		this.name = name;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -73,7 +72,7 @@ public class Departement implements Serializable {
 	public void setEntreprise(Entreprise entreprise) {
 		this.entreprise = entreprise;
 	}
-	
-	
+
+
 
 }
