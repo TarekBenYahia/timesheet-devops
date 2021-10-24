@@ -1,27 +1,25 @@
 package tn.esprit.spring.repository;
 
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.transaction.annotation.Transactional;
+import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.entities.User;
 
+import java.util.Date;
+
 @Repository
+@Transactional
 public interface UserRepository extends  CrudRepository<User, Long> {
+ /*   @Modifying
+	@Query(value = "insert into t_user (date_naissance, first_name,last_name, role) values (:dn, :fn,:ln, :role)", nativeQuery = true)
+	void insertUser(@Param("dn") Date dn, @Param("fn") String fn, @Param("ln") String ln, @Param("role") Role role);
+*/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

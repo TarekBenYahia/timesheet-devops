@@ -3,6 +3,7 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,24 +18,23 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "T_USER")
 public class User implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long id;   
-	
+	private Long id;
+
 	//@Column(name="USR_FIRST_NAME", length=20, unique=true, nullable=false)
-	private String firstName; 
-	
+	private String firstName;
+
 	private String lastName;
-	
-	@Temporal(TemporalType.DATE)
+
 	private Date dateNaissance;
-	
+
 	@Enumerated(EnumType.STRING)
-	Role role; 
-	
+	Role role;
+
 	public User() {	}
 
 	public User(String firstName, String lastName, Date dateNaissance, Role role) {
@@ -60,6 +60,14 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dateNaissance="
 				+ dateNaissance + ", role=" + role + "]";
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof User)) return false;
+		User user = (User) o;
+		return Objects.equals(getId(), user.getId()) && Objects.equals(firstName, user.firstName) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getDateNaissance(), user.getDateNaissance()) && getRole() == user.getRole();
 	}
 
 
@@ -88,6 +96,6 @@ public class User implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
+
 
 }

@@ -1,9 +1,11 @@
 package tn.esprit.spring.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.UserRepository;
 import tn.esprit.spring.entities.User;
 import org.apache.logging.log4j.LogManager;
@@ -45,34 +47,37 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User addUser(User u) {
-		// TODO Log à ajouter en début de la méthode
+
+		l.info("In method Add User");
+	//	userRepository.insertUser(u.getDateNaissance(),u.getLastName(),u.getLastName(),u.getRole());
+
 		User u_saved = userRepository.save(u);
-		// TODO Log à ajouter à la fin de la méthode
+		l.info("Utilisateur Ajoute");
 		return u_saved;
 	}
 
 	@Override
 	public User updateUser(User u) {
-		// TODO Log à ajouter en début de la méthode
+		l.info("update en cours");
 		User u_saved = userRepository.save(u);
-		// TODO Log à ajouter à la fin de la méthode
+		l.info("update done!!");
 		return u_saved;
 	}
 
 	@Override
 	public void deleteUser(String id) {
-		// TODO Log à ajouter en début de la méthode
+		l.info("Deleting...");
 		userRepository.deleteById(Long.parseLong(id));
-		// TODO Log à ajouter à la fin de la méthode
+		l.info("User {} deleted succesfully!",id);
 	}
 
 
 	@Override
 	public User retrieveUser(String id) {
-		// TODO Log à ajouter en début de la méthode
+		l.info("Recherche user en cours...");
 		//User u =  userRepository.findById(Long.parseLong(id)).orElse(null);
-		User u =  userRepository.findById(Long.parseLong(id)).get();
-		// TODO Log à ajouter à la fin de la méthode
+		User u =  userRepository.findById(Long.parseLong(id)).orElse(null);
+		l.info("user {} retrieved",u);
 		return u;
 	}
 }
