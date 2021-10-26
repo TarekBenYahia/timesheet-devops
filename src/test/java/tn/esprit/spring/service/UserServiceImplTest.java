@@ -18,9 +18,7 @@ import tn.esprit.spring.services.IUserService;
 public class UserServiceImplTest {
 	@Autowired
 	IUserService us;
-/*
 
-*/
 	public Role generateRandom(){
 	Role[] values = Role.values();
 	int length = values.length;
@@ -32,9 +30,8 @@ public class UserServiceImplTest {
 	public void addUserTest(){
 
 		User u =  new User("Tarek","Ben Yahia",new Date(), generateRandom());
-		//us.addUser( u);
 		Assertions.assertEquals(u,us.addUser(u));
-		//Assertions.assertEquals(us.addUser(u),u);
+
 	}
 	@Test
 	@Order(2)
@@ -55,6 +52,7 @@ public class UserServiceImplTest {
 		User user = us.updateUser(expected);
 		Assertions.assertEquals(expected,user);
 	}
+	/*
 	@Test
 	@Order(5)
 	public void testDeleteUser(){
@@ -62,7 +60,7 @@ public class UserServiceImplTest {
 		User user = us.retrieveUser("7");
 		Assertions.assertNull(user);
 	}
-
+*/
 	/*@Test
 	@Order(4)
 	public void updateUserTest(){
