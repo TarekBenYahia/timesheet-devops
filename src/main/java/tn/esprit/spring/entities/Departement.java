@@ -73,6 +73,8 @@ public class Departement implements Serializable {
 		this.entreprise = entreprise;
 	}
 
-
-
+	public Departement(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 }
