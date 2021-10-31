@@ -30,16 +30,13 @@ public class UserServiceImpl implements IUserService {
 			l.debug("connexion à la db ok!");
 
 			for (User user : users) {
-
-				l.info("Utilisateur");
 				l.info("Utilisateur {} : trouve:",user);
-
 			}
 
 			l.info("Out of Method retrieve all users with success");
 
 		}catch (Exception e) {
-			l.error("erreuur");
+			l.error("Error Retrieving users");
 		}
 
 
@@ -71,7 +68,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void deleteUser(String id) {
-		l.info("Deleting...");
+		l.info("Deleting User ...");
 		userRepository.deleteById(Long.parseLong(id));
 		l.info("User {} deleted succesfully!",id);
 	}
