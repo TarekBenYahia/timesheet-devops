@@ -17,48 +17,47 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Employe implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	//@SequenceGenerator(name="seq")
 	private int id;
-	
+
 	private String prenom;
-	
+
 
 	private String nom;
-		
+
 	//@Column(unique=true)
 	//@Pattern(regex=".+\@.+\..+")
 	private String email;
 
 	private String password;
-	
+
 	private boolean actif;
-	
+
 	@Enumerated(EnumType.STRING)
 	//@NotNull
 	private Role role;
-	
-	//@JsonBackReference  
+
+	//@JsonBackReference
 	@JsonIgnore
 	@ManyToMany(mappedBy="employes" )
 	//@NotNull
 	private List<Departement> departements;
-	
+
 	@OneToOne
-	private Contrat contrat; 
-	
+	private Contrat contrat;
+
 	public Employe() {
 		super();
 	}
-	
-		
+
+
 	public Employe(int id, String prenom, String nom, String email, String password, boolean actif, Role role) {
 		super();
-		System.out.println("test"); 
 		this.id = id;
 		this.prenom = prenom;
 		this.nom = nom;
@@ -78,7 +77,7 @@ public class Employe implements Serializable {
 		this.actif = actif;
 		this.role = role;
 	}
-	
+
 	public Employe(String nom, String prenom, String email, boolean actif, Role role) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -86,7 +85,7 @@ public class Employe implements Serializable {
 		this.actif = actif;
 		this.role = role;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -114,11 +113,11 @@ public class Employe implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-	 
+
 	public String getPassword() {
 		return password;
 	}
- 
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -162,14 +161,14 @@ public class Employe implements Serializable {
 
 	public void setContrat(Contrat contrat) {
 		this.contrat = contrat;
-	} 
+	}
 
 	@Override
 	public String toString() {
 		return "Employe [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", email=" + email + ", password="
 				+ password + ", actif=" + actif + ", role=" + role + "]";
 	}
-	
-	
-	
+
+
+
 }
